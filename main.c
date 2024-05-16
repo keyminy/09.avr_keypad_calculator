@@ -15,7 +15,6 @@
 // 1. for printf
 FILE OUTPUT = FDEV_SETUP_STREAM(UART0_transmit,NULL, _FDEV_SETUP_WRITE);
 
-int job = 5;
 char scm[50];
 
 int main(void)

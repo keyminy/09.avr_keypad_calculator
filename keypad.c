@@ -49,15 +49,16 @@ uint8_t get_keypad(int row,int col)
 	
 	// 반드시 아래의 코드를 집어 넣는다(To prevent chattering)
 	for(int delay=0; delay < 20; delay++); // NOP no operation
-		// keypad check delay
-		// 7  6  5  4   3   2  1  0
-		//C4 C3 C2 C1   R0 R1 R2 R3
-		//ex) row0 : connected to PA3
-		// if row0 is pressed
-		// 1  1 1  1    0  1  1  1
-		// 0  0 0  1    1  1  1  0(important)   (After shifting)
-		// & 0b00000001;하면?
-		// 0  0 0  0    0  0  0  x 가됨 -> 현재 current_state
+	// keypad check delay
+	
+	// 7  6  5  4   3   2  1  0
+	//C4 C3 C2 C1   R0 R1 R2 R3
+	//ex) row0 : connected to PA3
+	// if row0 is pressed
+	// 1  1 1  1    0  1  1  1 // if you pressed the button, values goes to 0
+	// 0  0 0  1    1  1  1  0(important)   (After shifting)
+	// & 0b00000001;하면?
+	// 0  0 0  0    0  0  0  x 가됨 -> 현재 current_state
 	//current_state = ((KEYPAD_PIN & (1 << row-3))) >> (row-3)) & 0b00000001;
 	current_state = KEYPAD_PIN >> row & 0b00000001; //row : 3이들어오면 0행의 row를 읽는 것
 	// 눌려졌다?
