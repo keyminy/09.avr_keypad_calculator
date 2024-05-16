@@ -41,8 +41,6 @@ int main(void)
 	/* UART통신, main의 while문 진입전 테스트*/
 	//printf("UART TEST!!!!\n");
 
-
-	
     while (1) 
     {
 		if(ms_count >= 60){

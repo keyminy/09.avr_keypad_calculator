@@ -44,7 +44,7 @@ uint8_t get_keypad(int row,int col)
 	int current_state = 1; // button initial value to 1
 	
 	KEYPAD_PORT = 0xff;
-	KEYPAD_PORT &= ~(1 << col); // 해당 col에 전류를 흘린다.
+	KEYPAD_PORT &= ~(1 << col + 4); // 해당 col에 전류를 흘린다.
 	// 해당 keypad port의 column값을 LOW로 만든다.
 	
 	// 반드시 아래의 코드를 집어 넣는다(To prevent chattering)
